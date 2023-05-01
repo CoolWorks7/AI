@@ -1,0 +1,31 @@
+#Add element to list
+append_to_list(List, Item):-
+	List = [Start | [ To_add | Reset ]],
+	nonvar(Start),
+	(var(To_add), To_add=Item;append_to_list([To_add|Reset], Item)),
+	writeln(List).
+
+
+#Calculate length of list
+len_list([], 0).
+len_list([_|T], N):- len_list(T,N1),
+	N is N1 + 1.
+
+
+#Check if item is a member of Array
+mem_list(X, [X|Y]).
+mem_list(X, [_|Y]:- mem_list(X,Y).
+
+
+#Sum of N integers
+sumto(1,1).
+sumto(N, R):- N1 is N-1,
+	sumto(N1, R1),
+	R is R1+N
+
+
+#Factorial of N integers
+fact(0,1).
+fact(N, R):- N1 is N-1,
+	fact(N1,R1),
+	R is N*R1.
